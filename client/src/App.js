@@ -5,14 +5,21 @@ import {useLocalStorage} from "./hooks/useLocalStorage";
 
 import './index.css'
 import Dashboard from "./components/Dashboard/Dashboard";
+import {ContactsProvider} from "./contexts/ContactsContext";
 
 const App = () => {
 	
 	const [id,setId] = useLocalStorage('id')
 	
+	const dashboard = (
+		<ContactsProvider>
+			<Dashboard id={id}/>
+		</ContactsProvider>
+	)
+	
 	return (
 		
-		id ? <Dashboard id={id}/> : <Login onIdSubmit={setId}/>
+		id ? dashboard : <Login onIdSubmit={setId}/>
 	);
 }
 
