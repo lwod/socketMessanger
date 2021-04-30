@@ -6,14 +6,17 @@ import {useLocalStorage} from "./hooks/useLocalStorage";
 import './index.css'
 import Dashboard from "./components/Dashboard/Dashboard";
 import {ContactsProvider} from "./contexts/ContactsContext";
+import {ConversationsProvider} from "./contexts/ConversationsContext";
 
 const App = () => {
 	
-	const [id,setId] = useLocalStorage('id')
+	const [id, setId] = useLocalStorage('id')
 	
 	const dashboard = (
 		<ContactsProvider>
-			<Dashboard id={id}/>
+			<ConversationsProvider>
+				<Dashboard id={id}/>
+			</ConversationsProvider>
 		</ContactsProvider>
 	)
 	
