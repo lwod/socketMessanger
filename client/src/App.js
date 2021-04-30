@@ -3,15 +3,16 @@ import {Login} from "./components/Login/Login";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {useLocalStorage} from "./hooks/useLocalStorage";
 
+import './index.css'
+import Dashboard from "./components/Dashboard/Dashboard";
+
 const App = () => {
 	
-	const [id,setId] = useLocalStorage()
+	const [id,setId] = useLocalStorage('id')
 	
 	return (
-		<div className="App">
-			{id}
-			<Login onIdSubmit={setId}/>
-		</div>
+		
+		id ? <Dashboard id={id}/> : <Login onIdSubmit={setId}/>
 	);
 }
 
